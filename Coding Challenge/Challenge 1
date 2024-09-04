@@ -1,1 +1,15 @@
-
+public class numbertriangle {
+public static void main(String[] args) {
+int n = 5;
+for (int a = 1; a <= n; a++) {
+for (int b = 1; b <= a; b++) {
+if (b == 1 || b == a || a == n) {
+System.out.print(b);
+} else {
+System.out.print(" ");
+}
+}
+System.out.println();
+}
+}
+}
