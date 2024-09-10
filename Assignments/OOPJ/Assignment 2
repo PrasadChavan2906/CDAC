@@ -1,1 +1,259 @@
+                                      Assignment No:2
+Q1. Write a program that checks if a given year is a leap year or not using both if-else and switch-case.
+
+Solution:
+
+import java.util.Scanner;
+
+public class leapyear {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a year: ");
+        int year = scanner.nextInt();
+
+    
+        if (IfElse(year)) {
+            System.out.println(year + " leap year.");
+        } else {
+            System.out.println(year + " not a leap year.");
+        }
+
+      
+        if (SwitchCase(year)) {
+            System.out.println(year + " leap year.");
+        } else {
+            System.out.println(year + " not a leap year.");
+        }
+
+        scanner.close();
+    }
+
+    
+    private static boolean IfElse(int year) {
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+ 
+    private static boolean SwitchCase(int year) {
+        boolean isLeap;
+        switch ((year % 4 == 0 ? 1 : 0) + (year % 100 == 0 ? 2 : 0) + (year % 400 == 0 ? 4 : 0)) {
+            case 1:  
+                isLeap = true;
+                break;
+            case 3: 
+                isLeap = false;
+                break;
+            case 5:  
+                isLeap = true;
+                break;
+            default:
+                isLeap = false;
+                break;
+        }
+        return isLeap;
+    }
+}
+
+		
+
+
+
+ 
+Q2: Implement a program that calculates the Body Mass Index (BMI) based on height and weight input using if-else to classify the BMI int categories (underweight, normal weight, overweight,etc).
+
+import java.util.Scanner;
+
+public class BMICalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input
+        System.out.print("Enter weight in kilograms: ");
+        double weight = scanner.nextDouble();
+
+        System.out.print("Enter height in meters: ");
+        double height = scanner.nextDouble();
+
+        // Calculate BMI
+        double bmi = calculateBMI(weight, height);
+
+        classifyBMI(bmi);
+
+        scanner.close();
+    }
+
+
+    private static double calculateBMI(double weight, double height) {
+        return weight / (height * height);
+    }
+
+    
+    private static void classifyBMI(double bmi) {
+        System.out.printf("Your BMI is %.2f\n", bmi);
+
+        if (bmi < 18.5) {
+            System.out.println("Category: Underweight");
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            System.out.println("Category: Normal weight");
+        } else if (bmi >= 25.0 && bmi < 29.9) {
+            System.out.println("Category: Overweight");
+        } else {
+            System.out.println("Category: Obese");
+        }
+    }
+}
+
+
+Q3: Write a program that checks if a person is eligible to vote based on their age.
+Solution:
+import java.util.Scanner;
+
+public class voterEligibility {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input age from the user
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+
+        // Check eligibility to vote
+        if (eligibleToVote(age)) {
+            System.out.println("You are eligible to vote.");
+        } else {
+            System.out.println("You are not eligible to vote.");
+        }
+
+        scanner.close();
+    }
+
+    // Method to check if the person is eligible to vote
+    private static boolean eligibleToVote(int age) {
+        return age >= 18;
+    }
+}
+
+
+Q4: Write a program that takes a month (1-12) and prints the corresponding season (Winter, Spring, Summer, Autumn) using a switch case
+import java.util.Scanner;
+
+public class seasonChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter month ");
+        int month = scanner.nextInt();
+
+
+        String season = getSeason(month);
+        System.out.println("The season is: " + season);
+
+        scanner.close();
+    }
+
+    private static String getSeason(int month) {
+        String season;
+        switch (month) {
+            case 1:
+            case 2: 
+            case 12:  
+                season = "Winter";
+                break;
+            case 3:  
+            case 4:  
+            case 5:  
+                season = "Spring";
+                break;
+            case 6:  
+            case 7:  
+            case 8:  
+                season = "Summer";
+                break;
+            case 9:  
+            case 10: 
+            case 11: 
+                season = "Autumn";
+                break;
+            default:
+                season = "Invalid month";
+                break;
+        }
+        return season;
+    }
+}
+Q5: Write a program that allows the user to select a shape (Circle, Square, Rectangle, Triangle) and then calculates the area based on user-provided dimensions using a switch case.
+Solution:
+import java.util.Scanner;
+
+public class areaCalculator{
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Select Shape :");
+        System.out.println("1. Circle");
+        System.out.println("2. Square");
+        System.out.println("3. Rectangle");
+        System.out.println("4. Triangle");
+         int choice = scanner.nextInt();
+
+        double area = 0;
+
+        switch (choice) {
+            case 1: // Circle
+                System.out.print("Enter radius ");
+                double radius = scanner.nextDouble();
+                area = Math.PI * radius * radius;
+                System.out.printf("The area  is %.2f\n", area);
+                break;
+
+            case 2: // Square
+                System.out.print("Enter side of square: ");
+                double side = scanner.nextDouble();
+                area = side * side;
+                System.out.printf("The area is %.2f\n", area);
+                break;
+
+            case 3: // Rectangle
+                System.out.print("Enter length: ");
+                double length = scanner.nextDouble();
+                System.out.print("Enter Breath : ");
+                double width = scanner.nextDouble();
+                area = length * width;
+                System.out.printf("The area is %.2f\n", area);
+                break;
+
+            case 4: // Triangle
+                System.out.print("Enter base: ");
+                double base = scanner.nextDouble();
+                System.out.print("Enter height ");
+                double height = scanner.nextDouble();
+                area = 0.5 * base * height;
+                System.out.printf("The area is %.2f\n", area);
+                break;
+
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+
+        scanner.close();
+    }
+}
 
